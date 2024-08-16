@@ -1,108 +1,58 @@
-'use client'
-import React, { useState } from 'react'
-import {
-  UsersIcon,
-  TruckIcon,
-  CogIcon,
-} from '@heroicons/react/24/outline'
+import Resume, { ResumeProps } from '../Components/Resume2';
 
-const routes = [
-  {
-    category_name: "MAIN MENU",
-    CategoryItems: [
+const App: React.FC = () => {
+  const resumeData: ResumeProps = {
+    personalInfo: {
+      name: "Dinesh Babu",
+      initial:"D",
+      title: "Business Development Manager",
+      summary: "Professional Business Developer with more than four years of experience in the business development processes. Involved in product testing, management, and development of new business opportunities.",
+      contact: [
+        { type: "email" as const, value: "jane.roe@gmail.com" },
+        { type: "phone" as const, value: "202-555-0166" },
+        { type: "location" as const, value: "New York, USA" },
+        { type: "linkedin" as const, value: "linkedin.com/in/jane.roe" },
+        { type: "skype" as const, value: "jane.roe" }
+      ]
+    },
+    skills: [
+      "SEO", "Public Speaking", "Negotiation", "Teamwork", "Decision Making",
+      "Research & Strategy", "Emotional Intelligence", "Outbound Marketing",
+      "Email Marketing", "Google Analytics", "Sales & Marketing", "Social Media Advertising"
+    ],
+    workExperience: [
       {
-        name: "DashBoard",
-        icon: <UsersIcon className="h-5 w-5 mr-3" />,
-      },
-      {
-        name: "Employees",
-        icon: <UsersIcon className="h-5 w-5 mr-3" />,
-      },
-      {
-        name: "Attendance",
-        icon: <UsersIcon className="h-5 w-5 mr-3" />,
-      },
-      {
-        name: "Project",
-        icon: <UsersIcon className="h-5 w-5 mr-3" />,
-      },
-      {
-        name: "Task Manager",
-        icon: <UsersIcon className="h-5 w-5 mr-3" />,
+        title: "Business Development Manager",
+        company: "AirState Solutions",
+        period: "09/2014 – 06/2017",
+        responsibilities: [
+          "Successfully managed $2 - 3 million budget projects and successfully achieved the project scheduled goals.",
+          "Developed and implemented new marketing and sales plans and defined the strategy for the next 5 years.",
+          "Reviewed constantly the customer feedback and then suggested ways to improve the processes and customer service levels which increased the satisfaction rate from 81% to 95%.",
+          "Ensured that new clients will grow into a loyal customer base in a specialist niche market by implementing a new loyalty program."
+        ]
       },
     ],
-  },
-  {
-    category_name: "MAIN MENU",
-    CategoryItems: [
+    education: [
       {
-        name: "Payroll",
-        icon: <TruckIcon className="h-5 w-5 mr-3" />,
-      },
-      {
-        name: "Invoice Generator",
-        icon: <TruckIcon className="h-5 w-5 mr-3" />,
-      },
-      {
-        name: "Reports",
-        icon: <TruckIcon className="h-5 w-5 mr-3" />,
-      },
+        degree: "MSc in Economics and Business Administration",
+        institution: "The University of Chicago",
+        period: "09/2008 – 06/2010"
+      }
     ],
-  },
-  {
-    category_name: "Others",
-    CategoryItems: [
-      {
-        name: "Settings",
-        icon: <CogIcon className="h-5 w-5 mr-3" />,
-      },
-      {
-        name: "Logout",
-        icon: <CogIcon className="h-5 w-5 mr-3" />,
-      },
+    organizations: [
+      "American Management Association (2015 – Present)",
+      "Association of Private Enterprise Education (2014 – Present)",
+      "eBusiness Association (eBA) (2013 – Present)"
     ],
-  },
-]
-
-const SideBar: React.FC = () => {
-  const [activeRoute, setActiveRoute] = useState<string | null>(null);
-
-  const handleRouteClick = (routeName: string) => {
-    setActiveRoute(routeName);
+    languages: [
+      { name: "English", proficiency: "Native or Bilingual Proficiency" },
+      { name: "Spanish", proficiency: "Full Professional Proficiency" },
+      { name: "French", proficiency: "Limited Working Proficiency" }
+    ]
   };
 
-  return (
-    <div className="fixed left-0 top-0 h-auto w-64 bg-white border border-gray-200 shadow-xl m-3 rounded-lg overflow-hidden">
-      <div className="flex flex-col h-full">
-        <div className="flex items-center justify-between px-4 py-5">
-          <div className="text-left">
-            <h1 className="text-md font-semibold">
-              <span className="text-blue-700">Box</span>
-              <span className="text-black">Way</span>
-            </h1>
-            <p className="text-gray-500 text-sm">Employee Management</p>
-          </div>
-        </div>
-        <div className="px-4 flex-1 overflow-y-auto">
-          {routes.map((category) => (
-            <div key={category.category_name} className='py-2'>
-              <h2 className="pb-2 text-xs font-medium text-slate-400">{category.category_name}</h2>
-              {category.CategoryItems.map((route) => (
-                <div
-                  key={route.name}
-                  className={`flex items-center cursor-pointer py-2 px-3 rounded-lg text-xs font-semibold ${activeRoute === route.name ? 'bg-gray-100 text-blue-700' : 'text-gray-900'}`}
-                  onClick={() => handleRouteClick(route.name)}
-                >
-                  {route.icon}
-                  {route.name}
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
+  return <Resume {...resumeData} />;
+};
 
-export default SideBar;
+export default App;

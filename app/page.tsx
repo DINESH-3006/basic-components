@@ -1,4 +1,4 @@
-import Resume, { ResumeProps } from '../Components/Resume2';
+import Resume4, { ResumeProps } from '../Components/Resume4';
 
 const App: React.FC = () => {
   const resumeData: ResumeProps = {
@@ -18,7 +18,7 @@ const App: React.FC = () => {
     skills: [
       "SEO", "Public Speaking", "Negotiation", "Teamwork", "Decision Making",
       "Research & Strategy", "Emotional Intelligence", "Outbound Marketing",
-      "Email Marketing", "Google Analytics", "Sales & Marketing", "Social Media Advertising"
+      "Email Marketing"
     ],
     workExperience: [
       {
@@ -52,7 +52,7 @@ const App: React.FC = () => {
     ]
   };
 
-  return <Resume {...resumeData} />;
+  return <Resume4 {...resumeData} />;
 };
 
 export default App;
